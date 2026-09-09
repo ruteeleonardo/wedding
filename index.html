@@ -1,140 +1,955 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Casamento</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header/Navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">💒 Nosso Casamento</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#schedule">Agenda</a></li>
-                <li><a href="#location">Local</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rute & Leonardo — Nosso Casamento</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #f8f5ef;
+        --paper: #fffdf9;
+        --sage: #89947e;
+        --sage-dark: #66705f;
+        --brown: #5e5148;
+        --gold: #b49a6a;
+        --text: #403a35;
+        --muted: #81776e;
+        --line: #e7e0d7;
+        --shadow: 0 18px 50px rgba(62, 51, 42, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text);
+        background: var(--cream);
+        line-height: 1.7;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        font-size: 0.72rem;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        line-height: 1.05;
+      }
+
+      h2 {
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        color: var(--brown);
+      }
+
+      .section {
+        padding: 100px 0;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+        padding: 20px 0;
+        transition: 0.3s;
+      }
+
+      nav.scrolled {
+        background: rgba(255, 253, 249, 0.94);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-inner {
+        width: min(1120px, calc(100% - 40px));
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.7rem;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        background:
+          linear-gradient(rgba(39, 31, 25, 0.27), rgba(39, 31, 25, 0.38)),
+          url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85')
+            center/cover;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-content {
+        padding: 100px 20px 60px;
+      }
+
+      .hero .eyebrow {
+        color: #f5e7c9;
+      }
+
+      .hero h1 {
+        font-size: clamp(4.5rem, 13vw, 7rem);
+        letter-spacing: 0.02em;
+      }
+
+      .hero-date {
+        margin-top: 18px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+      }
+
+      .hero-line {
+        width: 70px;
+        height: 1px;
+        background: #fff;
+        margin: 26px auto;
+        opacity: 0.8;
+      }
+
+      .hero-subtitle {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.45rem;
+        font-style: italic;
+      }
+
+      .scroll {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+
+      /* INTRO */
+      .intro {
+        text-align: center;
+        max-width: 760px;
+        margin: auto;
+      }
+
+      .intro p {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .script {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.7rem;
+        color: var(--gold);
+        font-style: italic;
+        margin-top: 28px;
+      }
+
+      /* STORY */
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+
+      .story-image {
+        height: 620px;
+        object-fit: cover;
+        border-radius: 220px 220px 8px 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .story-text p {
+        color: var(--muted);
+        margin-top: 25px;
+      }
+
+      /* COUNTDOWN */
+      .countdown-section {
+        background: var(--sage);
+        color: white;
+        text-align: center;
+      }
+
+      .countdown-section h2 {
+        color: white;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: clamp(18px, 6vw, 70px);
+        margin-top: 45px;
+      }
+
+      .count-number {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        line-height: 1;
+      }
+
+      .count-label {
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        opacity: 0.8;
+      }
+
+      /* EVENT */
+      .event-card {
+        background: var(--paper);
+        max-width: 850px;
+        margin: 45px auto 0;
+        padding: 55px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+
+      .event-card h3 {
+        font-size: 2.4rem;
+      }
+
+      .event-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        margin-top: 35px;
+      }
+
+      .event-info div {
+        padding: 18px;
+        border-right: 1px solid var(--line);
+      }
+
+      .event-info div:last-child {
+        border-right: 0;
+      }
+
+      .event-info strong {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.65rem;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+
+      .event-info span {
+        font-size: 0.85rem;
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 35px;
+        padding: 14px 28px;
+        border: 1px solid var(--brown);
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 0.68rem;
+        transition: 0.25s;
+      }
+
+      .button:hover {
+        background: var(--brown);
+        color: white;
+      }
+
+      /* GALLERY */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 50px;
+      }
+
+      .gallery img {
+        height: 360px;
+        object-fit: cover;
+      }
+
+      .gallery .wide {
+        grid-column: span 7;
+      }
+
+      .gallery .small {
+        grid-column: span 5;
+      }
+
+      .gallery .bottom {
+        grid-column: span 4;
+        height: 280px;
+      }
+
+      /* GIFTS */
+      .gifts-header {
+        text-align: center;
+        max-width: 700px;
+        margin: auto;
+      }
+
+      .gifts-header p {
+        margin-top: 20px;
+        color: var(--muted);
+      }
+
+      .gift-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 50px;
+      }
+
+      .gift-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        overflow: hidden;
+        transition: 0.25s;
+      }
+
+      .gift-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .gift-card img {
+        height: 210px;
+        object-fit: cover;
+      }
+
+      .gift-content {
+        padding: 24px;
+      }
+
+      .gift-content h3 {
+        font-size: 1.8rem;
+      }
+
+      .gift-description {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 8px 0;
+      }
+
+      .price {
+        color: var(--gold);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .gift-button {
+        width: 100%;
+        margin-top: 18px;
+        padding: 11px;
+        border: 1px solid var(--sage);
+        background: transparent;
+        color: var(--sage-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.63rem;
+        cursor: pointer;
+      }
+
+      .gift-button:hover {
+        background: var(--sage);
+        color: white;
+      }
+
+      /* RSVP */
+      .rsvp {
+        background: #e9e4da;
+        text-align: center;
+      }
+
+      .rsvp p {
+        max-width: 600px;
+        margin: 20px auto 0;
+        color: var(--muted);
+      }
+
+      .rsvp .button {
+        background: var(--brown);
+        color: white;
+        border-color: var(--brown);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--brown);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+      }
+
+      footer h2 {
+        color: white;
+        font-size: 3.4rem;
+      }
+
+      footer p {
+        opacity: 0.7;
+        margin-top: 12px;
+        font-size: 0.8rem;
+      }
+
+      /* TOAST */
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 25px;
+        transform: translate(-50%, 100px);
+        background: var(--brown);
+        color: white;
+        padding: 14px 22px;
+        font-size: 0.78rem;
+        box-shadow: var(--shadow);
+        transition: 0.3s;
+        z-index: 50;
+      }
+
+      .toast.show {
+        transform: translate(-50%, 0);
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          display: none;
+        }
+
+        .section {
+          padding: 75px 0;
+        }
+
+        .story-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .story-image {
+          height: 450px;
+        }
+
+        .event-card {
+          padding: 35px 20px;
+        }
+
+        .event-info {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .event-info div {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .event-info div:last-child {
+          border-bottom: 0;
+        }
+
+        .gallery {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery .wide,
+        .gallery .small,
+        .gallery .bottom {
+          grid-column: span 1;
+          height: 260px;
+        }
+
+        .gallery .wide {
+          grid-column: span 2;
+        }
+
+        .gift-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .countdown {
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 4.4rem;
+        }
+
+        .hero-date {
+          letter-spacing: 0.18em;
+          font-size: 0.72rem;
+        }
+
+        .count-number {
+          font-size: 2.5rem;
+        }
+
+        .count-label {
+          font-size: 0.55rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="nav">
+      <div class="nav-inner">
+        <a href="#" class="logo">R & L</a>
+        <div class="nav-links">
+          <a href="#historia">Nossa história</a>
+          <a href="#evento">O casamento</a>
+          <a href="#fotos">Fotos</a>
+          <a href="#presentes">Presentes</a>
+          <a href="#rsvp">RSVP</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Nós vamos nos casar</div>
+        <h1>
+          Rute <br />
+          & <br />
+          Leonardo
+        </h1>
+        <div class="hero-line"></div>
+        <div class="hero-date">21 de abril de 2027 · Fortaleza, Ceará</div>
+        <div class="hero-subtitle">
+          "E que seja assim: juntos, em todos os capítulos."
+        </div>
+      </div>
+      <div class="scroll">Role para descobrir ↓</div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Nos Juntamos!</h1>
-            <p class="subtitle">Você está convidado para celebrar nosso amor</p>
-            <button class="cta-button">Confirme sua presença</button>
+    <main>
+      <section class="section">
+        <div class="container intro">
+          <div class="eyebrow">Seja bem-vindo</div>
+          <h2>Um dia para celebrar o nosso amor</h2>
+          <p>
+            Criamos este espaço para compartilhar com vocês um pouquinho da
+            nossa história e todos os detalhes do nosso grande dia.
+          </p>
+          <div class="script">Estamos muito felizes em ter vocês conosco.</div>
         </div>
-    </section>
+      </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+      <section class="section" id="historia">
+        <div class="container story-grid">
+          <img
+            class="story-image"
+            src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=85"
+            alt="Casal caminhando"
+          />
+
+          <div class="story-text">
+            <div class="eyebrow">Nossa história</div>
+            <h2>De um encontro inesperado para uma vida inteira</h2>
+            <p>
+              Tudo começou com um encontro que parecia casual, mas que mudou
+              completamente os nossos caminhos. Vieram os primeiros encontros,
+              as viagens, as risadas, os planos e, principalmente, a certeza de
+              que queríamos construir uma vida juntos.
+            </p>
+            <p>
+              Agora chegou o momento de celebrar esse amor ao lado das pessoas
+              que fazem parte da nossa história.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section countdown-section">
         <div class="container">
-            <h2>Nossa História</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="about-image">
-                    <div class="placeholder-image">Foto do Casal</div>
-                </div>
+          <div class="eyebrow">Contagem regressiva</div>
+          <h2>Falta pouco para o nosso grande dia</h2>
+
+          <div class="countdown">
+            <div>
+              <div class="count-number" id="days">000</div>
+              <div class="count-label">dias</div>
             </div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section id="schedule" class="schedule">
-        <div class="container">
-            <h2>Cronograma</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">14:00</div>
-                    <div class="timeline-content">
-                        <h3>Cerimônia</h3>
-                        <p>Igreja Matriz - Centro</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">17:00</div>
-                    <div class="timeline-content">
-                        <h3>Coquetel</h3>
-                        <p>Espaço de Eventos - Salão de Entrada</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">19:00</div>
-                    <div class="timeline-content">
-                        <h3>Recepção e Jantar</h3>
-                        <p>Espaço de Eventos - Salão Principal</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">23:00</div>
-                    <div class="timeline-content">
-                        <h3>Dança e Diversão</h3>
-                        <p>Pista de Dança - Até o amanhecer!</p>
-                    </div>
-                </div>
+            <div>
+              <div class="count-number" id="hours">00</div>
+              <div class="count-label">horas</div>
             </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="location" class="location">
-        <div class="container">
-            <h2>Local do Evento</h2>
-            <div class="location-content">
-                <div class="map-placeholder">
-                    <div class="placeholder-map">Mapa do Local</div>
-                </div>
-                <div class="location-info">
-                    <h3>Espaço de Eventos Premium</h3>
-                    <p><strong>Endereço:</strong> Rua Principal, 123 - Cidade, Estado</p>
-                    <p><strong>CEP:</strong> 12345-678</p>
-                    <p><strong>Telefone:</strong> (11) 9999-9999</p>
-                    <p><strong>Estacionamento:</strong> Disponível no local</p>
-                    <button class="secondary-button">Ver no Google Maps</button>
-                </div>
+            <div>
+              <div class="count-number" id="minutes">00</div>
+              <div class="count-label">minutos</div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="cta-button">Enviar</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Nosso Casamento. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+            <div>
+              <div class="count-number" id="seconds">00</div>
+              <div class="count-label">segundos</div>
             </div>
+          </div>
         </div>
+      </section>
+
+      <section class="section" id="evento">
+        <div class="container">
+          <div class="intro">
+            <div class="eyebrow">Anote na agenda</div>
+            <h2>O nosso grande dia</h2>
+          </div>
+
+          <div class="event-card">
+            <h3>Cerimônia & Recepção</h3>
+
+            <div class="event-info">
+              <div>
+                <strong>Data</strong>
+                <span>21 de abril de 2027</span>
+              </div>
+              <div>
+                <strong>Horário</strong>
+                <span>15h30</span>
+              </div>
+              <div>
+                <strong>Local</strong>
+                <span>Casa Maraponga · Fortaleza/CE</span>
+              </div>
+            </div>
+
+            <a
+              class="button"
+              href="https://maps.app.goo.gl/sTRwy2dULfLgVn2u7"
+              target="_blank"
+              rel="noopener"
+            >
+              Ver localização
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fotos">
+        <div class="container">
+          <div class="intro">
+            <div class="eyebrow">Alguns momentos</div>
+            <h2>Nosso amor em fotos</h2>
+          </div>
+
+          <div class="gallery">
+            <img
+              class="wide"
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=85"
+              alt="Casamento"
+            />
+            <img
+              class="small"
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85"
+              alt="Decoração de casamento"
+            />
+            <img
+              class="bottom"
+              src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=85"
+              alt="Mesa de casamento"
+            />
+            <img
+              class="bottom"
+              src="https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=900&q=85"
+              alt="Noivos"
+            />
+            <img
+              class="bottom"
+              src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=85"
+              alt="Casal"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="presentes">
+        <div class="container">
+          <div class="gifts-header">
+            <div class="eyebrow">Com carinho</div>
+            <h2>Lista de presentes</h2>
+            <p>
+              A presença de vocês é o nosso maior presente. Mas, se quiserem nos
+              presentear, deixamos algumas sugestões simbólicas abaixo.
+            </p>
+          </div>
+
+          <div class="gift-grid">
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85"
+                alt="Cozinha"
+              />
+              <div class="gift-content">
+                <h3>Jantar especial</h3>
+                <p class="gift-description">
+                  Um jantar romântico para comemorar a vida a dois.
+                </p>
+                <div class="price">R$ 250,00</div>
+                <button
+                  class="gift-button"
+                  onclick="presentear('Jantar especial')"
+                >
+                  Presentear
+                </button>
+              </div>
+            </article>
+
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85"
+                alt="Praia"
+              />
+              <div class="gift-content">
+                <h3>Dia de praia</h3>
+                <p class="gift-description">
+                  Uma experiência especial durante a nossa lua de mel.
+                </p>
+                <div class="price">R$ 350,00</div>
+                <button
+                  class="gift-button"
+                  onclick="presentear('Dia de praia')"
+                >
+                  Presentear
+                </button>
+              </div>
+            </article>
+
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85"
+                alt="Casa"
+              />
+              <div class="gift-content">
+                <h3>Casa nova</h3>
+                <p class="gift-description">
+                  Uma ajudinha para deixar nosso cantinho ainda mais especial.
+                </p>
+                <div class="price">R$ 500,00</div>
+                <button class="gift-button" onclick="presentear('Casa nova')">
+                  Presentear
+                </button>
+              </div>
+            </article>
+
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=85"
+                alt="Viagem"
+              />
+              <div class="gift-content">
+                <h3>Passagem da lua de mel</h3>
+                <p class="gift-description">
+                  Uma contribuição para a nossa próxima aventura.
+                </p>
+                <div class="price">R$ 800,00</div>
+                <button
+                  class="gift-button"
+                  onclick="presentear('Passagem da lua de mel')"
+                >
+                  Presentear
+                </button>
+              </div>
+            </article>
+
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=85"
+                alt="Quarto"
+              />
+              <div class="gift-content">
+                <h3>Nosso quarto</h3>
+                <p class="gift-description">
+                  Para ajudar a construir nosso novo lar.
+                </p>
+                <div class="price">R$ 1.000,00</div>
+                <button
+                  class="gift-button"
+                  onclick="presentear('Nosso quarto')"
+                >
+                  Presentear
+                </button>
+              </div>
+            </article>
+
+            <article class="gift-card">
+              <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
+                alt="Viagem"
+              />
+              <div class="gift-content">
+                <h3>Experiência inesquecível</h3>
+                <p class="gift-description">
+                  Uma aventura para guardar para sempre na memória.
+                </p>
+                <div class="price">R$ 1.500,00</div>
+                <button
+                  class="gift-button"
+                  onclick="presentear('Experiência inesquecível')"
+                >
+                  Presentear
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section rsvp" id="rsvp">
+        <div class="container">
+          <div class="eyebrow">Esperamos por você</div>
+          <h2>Confirme sua presença</h2>
+          <p>
+            Será muito especial compartilhar esse momento com vocês. Confirme
+            sua presença para nos ajudar na organização.
+          </p>
+          <a
+            class="button"
+            href="https://forms.google.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            Confirmar presença
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <h2>
+        Rute <br />
+        & <br />
+        Leonardo
+      </h2>
+      <p>21 · 04 · 2027</p>
+      <p>Feito com amor para celebrar o nosso grande dia ♡</p>
     </footer>
-</body>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      // ==============================
+      // ALTERE A DATA DO CASAMENTO AQUI
+      // ==============================
+      const weddingDate = new Date('2027-04-21T15:30:00-03:00');
+
+      function updateCountdown() {
+        const now = new Date();
+        const difference = weddingDate - now;
+
+        if (difference <= 0) {
+          document.getElementById('days').textContent = '000';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById('days').textContent = String(days).padStart(
+          3,
+          '0',
+        );
+        document.getElementById('hours').textContent = String(hours).padStart(
+          2,
+          '0',
+        );
+        document.getElementById('minutes').textContent = String(
+          minutes,
+        ).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(
+          seconds,
+        ).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Navbar
+      window.addEventListener('scroll', () => {
+        document
+          .getElementById('nav')
+          .classList.toggle('scrolled', window.scrollY > 40);
+      });
+
+      // Exemplo de ação dos presentes.
+      // Depois você pode substituir por uma página de checkout,
+      // PIX, Mercado Pago, link do Casar.com etc.
+      function presentear(item) {
+        const toast = document.getElementById('toast');
+        toast.textContent = `Você escolheu presentear com "${item}".`;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+    </script>
+  </body>
 </html>
