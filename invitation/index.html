@@ -19,6 +19,69 @@ body{background:#e9dfd0;display:flex;align-items:center;justify-content:center}
 .open .flap{transform:rotateX(180deg)}
 .open .seal{opacity:0;transform:translate(-50%,-50%) scale(.7);pointer-events:none}
 .open .invite{opacity:1;transform:translateY(-8%);z-index:8}
+
+/* Ajuste de escala para celular */
+.envelope {
+  width: min(94vw, 560px) !important;
+  height: min(68vh, 620px) !important;
+}
+.invite {
+  width: min(94vw, 560px) !important;
+  max-height: 88vh !important;
+}
+.seal {
+  width: clamp(90px, 24vw, 150px) !important;
+  height: clamp(90px, 24vw, 150px) !important;
+}
+
+
+/* Modo paisagem: envelope e convite ocupam melhor a largura da tela */
+@media (orientation: landscape) and (max-height: 700px) {
+  .scene {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .envelope {
+    width: min(82vw, 900px) !important;
+    height: min(78vh, 500px) !important;
+  }
+
+  .invite {
+    width: min(78vw, 820px) !important;
+    max-width: 78vw !important;
+    max-height: 88vh !important;
+    object-fit: contain !important;
+  }
+
+  .seal {
+    width: clamp(75px, 16vh, 125px) !important;
+    height: clamp(75px, 16vh, 125px) !important;
+  }
+}
+
+
+/* Centraliza o convite exatamente no centro do envelope */
+.envelope {
+  position: relative !important;
+}
+
+.invite {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+}
+
+@media (orientation: landscape) and (max-height: 700px) {
+  .invite {
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
 </style>
 </head>
 <body>
