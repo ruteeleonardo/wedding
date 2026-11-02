@@ -408,6 +408,210 @@
         font-size: 12px;
         color: var(--muted);
       }
+      .page-header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        align-items: end;
+        gap: clamp(2rem, 6vw, 5.5rem);
+        width: min(1250px, calc(100% - 12vw));
+        margin: 0 auto;
+        padding: clamp(3rem, 5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+      }
+      .eyebrow {
+        margin: 0 0 1.15rem;
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.66rem;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 9.5ch;
+        margin: 0;
+        color: #494641;
+        font-size: clamp(2.8rem, 5vw, 4.15rem);
+        font-weight: 400;
+        letter-spacing: -0.035em;
+        line-height: 0.98;
+      }
+      .subtitle {
+        max-width: 42rem;
+        margin: 0 0 0.25rem;
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: clamp(0.92rem, 1.2vw, 1rem);
+        line-height: 1.8;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: clamp(0.55rem, 1.5vw, 1.15rem);
+        width: min(1180px, calc(100% - 2.5rem));
+        margin: 0 auto 4rem;
+        padding: 0 !important;
+      }
+      .photo {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        padding: 0;
+        border: 0;
+        border-radius: 2px;
+        aspect-ratio: 4 / 5;
+        background: var(--photo-placeholder);
+        cursor: zoom-in;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .photo:nth-child(5n + 2),
+      .photo:nth-child(7n + 4) {
+        aspect-ratio: 3 / 4;
+      }
+      .photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.45s ease;
+      }
+      @media (hover: hover) {
+        .photo:hover img {
+          transform: scale(1.035);
+        }
+      }
+      .photo:focus-visible,
+      .lightbox button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .page-footer {
+        padding: 0 1.25rem 3rem;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .signature {
+        margin-bottom: 0.65rem;
+        color: var(--accent);
+        font-size: 1.1rem;
+        letter-spacing: 0.18em;
+      }
+
+      .lightbox {
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 4.5rem 4.5rem 3.75rem;
+        background: rgb(24 22 20 / 95%);
+      }
+      .lightbox.is-open {
+        display: flex;
+      }
+      .lightbox-image {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        box-shadow: 0 12px 50px rgb(0 0 0 / 25%);
+      }
+      .lightbox-caption {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        color: #f8f5f0;
+        font:
+          0.85rem Arial,
+          sans-serif;
+        text-align: center;
+      }
+      .lightbox button {
+        position: absolute;
+        display: grid;
+        width: 2.75rem;
+        height: 2.75rem;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 35%);
+        border-radius: 50%;
+        background: rgb(255 255 255 / 8%);
+        color: #fff;
+        font:
+          1.6rem Arial,
+          sans-serif;
+        cursor: pointer;
+      }
+      .lightbox button:hover {
+        background: rgb(255 255 255 / 18%);
+      }
+      .close {
+        top: 1rem;
+        right: 1rem;
+      }
+      .previous {
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+      }
+      .next {
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+      }
+
+      @media (max-width: 760px) {
+        .page-header {
+          grid-template-columns: 1fr;
+          align-items: start;
+          gap: 1.25rem;
+          width: calc(100% - 2rem);
+        }
+        h1 {
+          max-width: 10ch;
+          font-size: clamp(2.7rem, 12vw, 3.7rem);
+        }
+        .subtitle {
+          max-width: 34rem;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: calc(100% - 1.25rem);
+          gap: 0.5rem;
+        }
+        .photo {
+          aspect-ratio: 3 / 4;
+        }
+        .lightbox {
+          padding: 4rem 1rem 3.75rem;
+        }
+        .previous {
+          left: 0.4rem;
+        }
+        .next {
+          right: 0.4rem;
+        }
+      }
+      @media (max-width: 380px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          aspect-ratio: 4 / 5;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
+      }
       @media (max-width: 760px) {
         .links {
           display: none;
@@ -596,73 +800,52 @@
       </div>
     </section>
 
-    <section id="fotos">
-      <div class="container">
-        <div class="gallery-intro">
-          <div>
-            <div class="eyebrow">Alguns capítulos</div>
-            <h2>Nosso amor em fotos</h2>
-          </div>
-          <p class="lead">
-            Um pequeno álbum da nossa história. Aqui vocês poderão acompanhar
-            também os registros do grande dia.
-          </p>
+    <section id="fotos" style="padding: 0">
+      <header class="page-header">
+        <div class="header-title">
+          <p class="eyebrow">Alguns capítulos</p>
+          <h1>Nosso amor em fotos</h1>
         </div>
-        <div class="gallery">
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85"
-              alt="Casamento"
-            />
-          </figure>
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=85"
-              alt="Decoração"
-            />
-          </figure>
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=900&q=85"
-              alt="Mesa"
-            />
-          </figure>
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85"
-              alt="Noivos"
-            />
-          </figure>
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21c?auto=format&fit=crop&w=900&q=85"
-              alt="Casal"
-            />
-          </figure>
-          <figure>
-            <img
-              src="https://images.unsplash.com/photo-1519225421980-da8545b1eaaa?auto=format&fit=crop&w=900&q=85"
-              alt="Celebração"
-            />
-          </figure>
-        </div>
-        <div class="upload">
-          <div class="eyebrow">Você também faz parte dessa história</div>
-          <h3>📸 Compartilhe suas fotos</h3>
-          <p class="lead" style="margin: 10px auto 25px">
-            Tirou uma foto durante o casamento? Queremos guardar esse momento
-            também.
-          </p>
-          <a
-            class="btn"
-            href="#"
-            onclick="
-              alert('Cole aqui o link do álbum compartilhado do Google Fotos.');
-              return false;
-            "
-            >Enviar fotos</a
-          >
-        </div>
+        <p class="subtitle">
+          Um pequeno álbum da nossa história. Aqui vocês poderão acompanhar
+          também os registros do grande dia.
+        </p>
+      </header>
+
+      <main>
+        <section class="gallery" id="gallery" aria-label="Galeria de fotos">
+          <!--
+        Coloque as fotos em: assets/images/galeria/
+        Nomeie os arquivos de foto-01.jpg até foto-27.jpg.
+        Se usar outro formato ou nomes diferentes, ajuste a lista no JavaScript abaixo.
+      -->
+        </section>
+      </main>
+
+      <div
+        class="lightbox"
+        id="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visualizador de fotos"
+        aria-hidden="true"
+      >
+        <button class="close" id="close" type="button" aria-label="Fechar foto">
+          ×
+        </button>
+        <button
+          class="previous"
+          id="previous"
+          type="button"
+          aria-label="Foto anterior"
+        >
+          ‹
+        </button>
+        <img class="lightbox-image" id="lightboxImage" alt="" />
+        <button class="next" id="next" type="button" aria-label="Próxima foto">
+          ›
+        </button>
+        <div class="lightbox-caption" id="caption" aria-live="polite"></div>
       </div>
     </section>
 
@@ -833,7 +1016,7 @@
       </div>
     </section>
 
-    <section class="message">
+    <!-- <section class="message">
       <div class="container">
         <div class="eyebrow">Uma lembrança para nós</div>
         <h2>Deixe uma mensagem</h2>
@@ -846,9 +1029,9 @@
           amamos.”
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="rsvp" id="rsvp">
+    <!-- <section class="rsvp" id="rsvp">
       <div class="container">
         <div class="eyebrow">Esperamos por você</div>
         <h2>Confirme sua presença</h2>
@@ -860,7 +1043,7 @@
           >Confirmar presença</a
         >
       </div>
-    </section>
+    </section> -->
 
     <footer>
       <div class="footer-names">Rute & Leonardo</div>
@@ -903,6 +1086,118 @@
             '\\n\\nAgora substitua esta ação pelo seu PIX/QR Code.',
         );
       }
+    </script>
+    <script>
+      // Galeria estática: HTML, CSS e JavaScript puro, sem Angular ou bibliotecas externas.
+      const photos = Array.from({ length: 27 }, (_, index) => {
+        const number = String(index + 1).padStart(2, '0');
+        return {
+          src: `./assets/images/galeria/foto-${number}.jpg`,
+          alt: `Foto ${index + 1} de Rute e Leonardo`,
+        };
+      });
+
+      const gallery = document.getElementById('gallery');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const caption = document.getElementById('caption');
+      const closeButton = document.getElementById('close');
+      let currentIndex = 0;
+      let previouslyFocusedElement = null;
+
+      photos.forEach((photo, index) => {
+        const button = document.createElement('button');
+        button.className = 'photo';
+        button.type = 'button';
+        button.setAttribute('aria-label', `Ampliar foto ${index + 1}`);
+
+        const img = document.createElement('img');
+        img.src = photo.src;
+        img.alt = photo.alt;
+        img.loading = index < 6 ? 'eager' : 'lazy';
+        img.decoding = 'async';
+        img.onerror = () => {
+          // Esconde apenas o espaço da imagem que não foi encontrada.
+          button.hidden = true;
+          console.warn(`Imagem não encontrada: ${photo.src}`);
+        };
+
+        button.appendChild(img);
+        button.addEventListener('click', () => openLightbox(index));
+        gallery.appendChild(button);
+      });
+
+      function openLightbox(index) {
+        currentIndex = index;
+        previouslyFocusedElement = document.activeElement;
+        updateLightbox();
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+      }
+
+      function updateLightbox() {
+        const photo = photos[currentIndex];
+        lightboxImage.src = photo.src;
+        lightboxImage.alt = photo.alt;
+        caption.textContent = `${currentIndex + 1} de ${photos.length}`;
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.removeAttribute('src');
+        document.body.style.overflow = '';
+        if (previouslyFocusedElement) previouslyFocusedElement.focus();
+      }
+
+      function showPrevious() {
+        currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+        updateLightbox();
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % photos.length;
+        updateLightbox();
+      }
+
+      closeButton.addEventListener('click', closeLightbox);
+      document
+        .getElementById('previous')
+        .addEventListener('click', showPrevious);
+      document.getElementById('next').addEventListener('click', showNext);
+
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showPrevious();
+        if (event.key === 'ArrowRight') showNext();
+      });
+
+      // Também permite trocar as fotos com o gesto de deslizar no celular.
+      let touchStartX = null;
+      lightbox.addEventListener(
+        'touchstart',
+        (event) => {
+          touchStartX = event.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+      lightbox.addEventListener(
+        'touchend',
+        (event) => {
+          if (touchStartX === null) return;
+          const deltaX = event.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(deltaX) > 50) deltaX < 0 ? showNext() : showPrevious();
+          touchStartX = null;
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>
