@@ -1090,9 +1090,9 @@
     <script>
       // Galeria estática: HTML, CSS e JavaScript puro, sem Angular ou bibliotecas externas.
       const photos = Array.from({ length: 27 }, (_, index) => {
-        const number = String(index + 1).padStart(2, '0');
+        const number = String(index + 1);
         return {
-          src: `./assets/images/galeria/${number}.jpg`,
+          src: `https://ruteeleonardo.github.io/wedding/assets/${number}.JPG`,
           alt: `Foto ${index + 1} de Rute e Leonardo`,
         };
       });
